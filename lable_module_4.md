@@ -25,4 +25,5 @@
 
 ## Page Object Model
 
+[exaple test project](https://blog.testproject.io/2019/07/16/develop-page-object-selenium-tests-using-python/)
 

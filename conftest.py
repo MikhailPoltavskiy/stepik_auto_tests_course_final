@@ -25,13 +25,13 @@ def browser(request):
         service = Service(executable_path="C:/chromedriver/chromedriver.exe")
         # service = Service()
         browser = webdriver.Chrome(service=service, options=options)
-        browser.implicitly_wait(10)
+        # browser.implicitly_wait(10)
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         options = Options()
         options.set_preference("intl.accept_languages", user_language)
         browser = webdriver.Firefox(options=options)
-        browser.implicitly_wait(10)
+        # browser.implicitly_wait(10)
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
