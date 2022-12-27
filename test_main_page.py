@@ -2,6 +2,7 @@ import pytest
 
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
+from pages.basket_page import BasketPage
 
 link = "http://selenium1py.pythonanywhere.com/"
 link_1 = 'http://selenium1py.pythonanywhere.com/ru/accounts/login/'
@@ -28,3 +29,14 @@ def test_should_be_login_page(browser):
     page = LoginPage(browser, link_1)
     page.open()
     page.should_be_login_page()
+
+
+@pytest.mark.new
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    link_2 = 'http://selenium1py.pythonanywhere.com/en-gb/'
+    page = MainPage(browser, link_2)
+    page.open()
+    page.should_be_basket_link()
+    page.go_to_basket_page()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.should_be_basket_empty()
