@@ -6,6 +6,12 @@ import pytest
 # link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019'
 
 
+# @pytest.mark.parametrize(promo_code, range(10))
+# def test_guest_can_add_product_to_basket(browser, promo_code):
+#     PRODUCT_URL = ('http://selenium1py.pythonanywhere.com/catalogue/'
+#                    'coders-at-work_207/?promo=offer{}'.format(promo_code))
+
+
 @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
