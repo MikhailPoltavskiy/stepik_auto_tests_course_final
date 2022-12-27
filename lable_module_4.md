@@ -27,3 +27,36 @@
 
 [exaple test project](https://blog.testproject.io/2019/07/16/develop-page-object-selenium-tests-using-python/)
 
+
+## Отсутсвие элемента
+
++ Элемент потенциально может появиться на странице
++ Элемент присутствует на странице и должен исчезнуть
+
++ [как не надо делать](https://habr.com/ru/company/badoo/blog/419419/)
++ [Ожидания](https://selenium-python.readthedocs.io/waits.html)
+
+Пример использования:
+
+    def is_not_element_present(self, how, what, timeout=4):
+    try:
+        WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+    except TimeoutException:
+        return True
+
+    return False
+
+___
+    def should_not_be_success_message(self):
+    assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+       "Success message is presented, but should not be"
+
+___
+    def is_disappeared(self, how, what, timeout=4):
+    try:
+        WebDriverWait(self.browser, timeout, 1, TimeoutException).\
+            until_not(EC.presence_of_element_located((how, what)))
+    except TimeoutException:
+        return False
+
+    return True

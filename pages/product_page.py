@@ -28,3 +28,11 @@ class ProductPage(BasePage):
 
     def should_be_price_product(self):
         assert self.is_element_present(*ProductPageLocators.PRODUCT_PRICE), "Price product is not present"
+
+    def should_not_be_massege(self):
+        assert self.is_not_element_present(
+            *ProductPageLocators.MSG_PRODUCT_ADD), "Success message is presented, but should not be"
+
+    def should_be_message_disappear(self):
+        assert self.is_disappeared(
+            *ProductPageLocators.MSG_PRODUCT_ADD), "Success message is presented, but should not be"
