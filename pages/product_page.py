@@ -13,7 +13,7 @@ class ProductPage(BasePage):
         price_product = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         price_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         self.browser.find_element(*ProductPageLocators.BTN_ADD_TO_BASKET).click()
-        self.solve_quiz_and_get_code()
+        # self.solve_quiz_and_get_code()
         assert price_name == self.browser.find_element(
             *ProductPageLocators.MSG_PRODUCT_ADD).text, "Name in basket no correct"
         assert price_product in self.browser.find_element(

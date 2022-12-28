@@ -16,22 +16,19 @@ def pytest_addoption(parser):
 def browser(request):
     browser_name = request.config.getoption("browser")
     user_language = request.config.getoption("language")
-    # browser = None
     if browser_name == "chrome":
         print("\nstart browser for test..")
         options = webdriver.ChromeOptions()
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        service = Service(executable_path="C:/chromedriver/chromedriver.exe")
-        # service = Service()
+        # service = Service(executable_path="C:/chromedriver/chromedriver.exe")
+        service = Service()
         browser = webdriver.Chrome(service=service, options=options)
-        # browser.implicitly_wait(10)
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         options = Options()
         options.set_preference("intl.accept_languages", user_language)
         browser = webdriver.Firefox(options=options)
-        # browser.implicitly_wait(10)
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
